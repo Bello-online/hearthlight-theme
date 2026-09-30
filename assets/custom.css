@@ -1,0 +1,128 @@
+/* Hearthlight brand refinements. Loaded after base.css and cro.css from layout/theme.liquid.
+   Uses Dawn's CSS variables so every rule follows the active colour scheme. */
+
+:root {
+  --hl-amber: 245, 165, 36;
+  --hl-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+/* Typography: headings sit a little tighter in Rubik. */
+h1, h2, h3, .h0, .h1, .h2, .h3, .banner__heading, .title, .product__title h1, .stats__value {
+  letter-spacing: -0.02em;
+}
+.h0, .hxl, .hxxl {
+  letter-spacing: -0.03em;
+}
+.announcement-bar__message {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* Primary buttons: soft amber glow on hover and keyboard focus. */
+.button,
+.shopify-payment-button__button--unbranded,
+.product-form__submit,
+.sticky-atc__button {
+  transition: box-shadow 0.2s var(--hl-ease), transform 0.2s var(--hl-ease);
+}
+.button:not(.button--secondary):not(.button--tertiary):hover,
+.button:not(.button--secondary):not(.button--tertiary):focus-visible,
+.product-form__submit:hover,
+.product-form__submit:focus-visible,
+.sticky-atc__button:hover,
+.shopify-payment-button__button--unbranded:hover {
+  box-shadow: 0 0 0 0.3rem rgba(var(--hl-amber), 0.25);
+}
+.button--secondary:hover {
+  box-shadow: 0 0 0 0.3rem rgba(var(--color-foreground), 0.12);
+}
+
+/* Product form: comfortable tap targets. */
+.product-form__submit,
+.shopify-payment-button__button,
+.quick-add__submit,
+.sticky-atc__button {
+  min-height: 4.8rem;
+}
+.product-form__buttons {
+  margin-top: 0.8rem;
+}
+
+/* Cards: lift 2px and brighten slightly on hover. */
+.card-wrapper .card,
+.card-wrapper .card__inner {
+  transition: transform 0.2s var(--hl-ease), box-shadow 0.2s var(--hl-ease);
+}
+.card-wrapper:hover .card--card,
+.card-wrapper:hover .card--standard .card__inner {
+  transform: translateY(-2px);
+  box-shadow: 0 0.6rem 1.6rem rgba(0, 0, 0, 0.35), 0 0 0 0.1rem rgba(var(--hl-amber), 0.18);
+}
+
+/* Hero text box: slight translucent backdrop so it reads over any image. */
+.banner .banner__box {
+  background: rgba(var(--color-background), 0.86);
+  -webkit-backdrop-filter: blur(0.8rem);
+  backdrop-filter: blur(0.8rem);
+  box-shadow: 0 1.2rem 3.2rem rgba(0, 0, 0, 0.3);
+}
+.banner .banner__box .banner__text {
+  color: rgba(var(--color-foreground), 0.85);
+}
+
+/* Badges: small, legible, no pill border. */
+.badge {
+  border: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+}
+
+/* Trust bar and testimonial accents pick up the scheme's button colour. */
+.trust-bar__icon,
+.comparison__yes svg {
+  color: rgb(var(--color-button));
+}
+.trust-bar__heading {
+  font-weight: 600;
+}
+.testimonial-card {
+  background: rgba(var(--color-foreground), 0.05);
+}
+
+/* Focus ring that stays visible on dark surfaces. */
+*:focus-visible,
+.focused {
+  outline: 0.2rem solid rgb(var(--color-button));
+  outline-offset: 0.3rem;
+  box-shadow: none;
+}
+.button:focus-visible {
+  outline-offset: 0.2rem;
+}
+
+/* Header and cart drawer: hairline separators instead of heavy borders. */
+.header-wrapper--border-bottom,
+.announcement-bar-section .utility-bar--bottom-border {
+  border-bottom-color: rgba(var(--color-foreground), 0.1);
+}
+.drawer__inner {
+  border-left: 0.1rem solid rgba(var(--color-foreground), 0.1);
+}
+
+/* Reduced motion: keep hover states, drop the movement. */
+@media (prefers-reduced-motion: reduce) {
+  .button,
+  .card-wrapper .card,
+  .card-wrapper .card__inner,
+  .product-form__submit,
+  .sticky-atc__button {
+    transition: none;
+  }
+  .card-wrapper:hover .card--card,
+  .card-wrapper:hover .card--standard .card__inner {
+    transform: none;
+  }
+}

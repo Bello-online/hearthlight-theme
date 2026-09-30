@@ -1,0 +1,53 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "brand": {
+          "type": "brand_information",
+          "settings": {
+            "show_social": true
+          }
+        },
+        "menu": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Shop",
+            "menu": "footer"
+          }
+        },
+        "help": {
+          "type": "text",
+          "settings": {
+            "heading": "Help",
+            "subtext": "<p>Most orders arrive in 8–15 business days; the estimate at checkout is the real one.</p><p><a href=\"/pages/track-order\" title=\"Track order\">Track your order</a><br><a href=\"/pages/contact\" title=\"Contact\">Contact us</a><br><a href=\"/pages/how-we-choose\" title=\"How we choose\">How we choose products</a></p>"
+          }
+        }
+      },
+      "block_order": [
+        "brand",
+        "menu",
+        "help"
+      ],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "newsletter_enable": true,
+        "newsletter_heading": "New arrivals and restocks",
+        "enable_follow_on_shop": true,
+        "show_social": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "payment_enable": true,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 48,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

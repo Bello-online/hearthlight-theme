@@ -1,0 +1,588 @@
+{
+  "sections": {
+    "hero": {
+      "type": "image-banner",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Light that turns on before you reach for the switch.",
+            "heading_size": "h0"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "Motion-sensor lights that charge over USB-C and mount magnetically, so a hallway, cabinet or wardrobe is lit in about a minute with no tools and no wiring.",
+            "text_style": "body"
+          }
+        },
+        "buttons": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop lighting",
+            "button_link_1": "shopify://collections/all",
+            "button_style_secondary_1": false,
+            "button_label_2": "How we choose",
+            "button_link_2": "shopify://pages/how-we-choose",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": [
+        "heading",
+        "text",
+        "buttons"
+      ],
+      "settings": {
+        "image_overlay_opacity": 20,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": true,
+        "color_scheme": "scheme-2",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "left",
+        "show_text_below": true
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "shipping": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "heading": "Free shipping over $75",
+            "text": "Canada-wide, applied automatically at checkout"
+          }
+        },
+        "returns": {
+          "type": "item",
+          "settings": {
+            "icon": "return",
+            "heading": "30-day returns",
+            "text": "Unused, in the original packaging"
+          }
+        },
+        "warranty": {
+          "type": "item",
+          "settings": {
+            "icon": "check_mark",
+            "heading": "12-month replacement",
+            "text": "On manufacturing defects, no arguments"
+          }
+        },
+        "power": {
+          "type": "item",
+          "settings": {
+            "icon": "lightning_bolt",
+            "heading": "USB-C rechargeable",
+            "text": "No wiring, no batteries to replace"
+          }
+        }
+      },
+      "block_order": [
+        "shipping",
+        "returns",
+        "warranty",
+        "power"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    },
+    "best_sellers": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Best sellers",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "best-sellers",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "outline",
+        "enable_desktop_slider": false,
+        "swipe_on_mobile": true,
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "columns_mobile": "2",
+        "padding_top": 48,
+        "padding_bottom": 36
+      }
+    },
+    "why_it_works": {
+      "type": "multicolumn",
+      "blocks": {
+        "sensor": {
+          "type": "column",
+          "settings": {
+            "title": "Motion sensor with adjustable delay",
+            "text": "<p>An infrared sensor turns the light on when someone moves in front of it and off again after a set delay. Hallways and closets are lit only while you are actually there.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "mount": {
+          "type": "column",
+          "settings": {
+            "title": "Magnetic mount, no drilling",
+            "text": "<p>A slim metal plate sticks to the surface; the light snaps onto it magnetically. Pull it off to charge, snap it back when it is done. No screws, no wiring, no electrician.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "colour": {
+          "type": "column",
+          "settings": {
+            "title": "Three colour temperatures",
+            "text": "<p>Warm, neutral or cool white. Warm for a hallway at night, neutral under kitchen cabinets, cool inside a wardrobe where you need to see true colours.</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "sensor",
+        "mount",
+        "colour"
+      ],
+      "settings": {
+        "title": "Why it works",
+        "heading_size": "h2",
+        "image_width": "third",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 48
+      }
+    },
+    "featured_lamp": {
+      "type": "featured-product",
+      "blocks": {
+        "eyebrow": {
+          "type": "text",
+          "settings": {
+            "text": "Rechargeable · Motion-activated",
+            "text_style": "uppercase"
+          }
+        },
+        "title": {
+          "type": "title",
+          "settings": {
+            "heading_size": "h2"
+          }
+        },
+        "price": {
+          "type": "price"
+        },
+        "variant_picker": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "button",
+            "swatch_shape": "circle"
+          }
+        },
+        "quantity_selector": {
+          "type": "quantity_selector"
+        },
+        "buy_buttons": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "show_gift_card_recipient": false
+          }
+        },
+        "description": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.description | strip_html | truncatewords: 45 }}",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "eyebrow",
+        "title",
+        "price",
+        "variant_picker",
+        "quantity_selector",
+        "buy_buttons",
+        "description"
+      ],
+      "settings": {
+        "product": "smart-infrared-sensor-lamp-wireless-magnetic-long-cabinet-light-with-rechargeable-hallway-wardrobe",
+        "color_scheme": "scheme-3",
+        "secondary_background": false,
+        "media_size": "medium",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": false,
+        "enable_video_looping": false,
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "rooms": {
+      "type": "collection-list",
+      "blocks": {
+        "kitchen": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "kitchen"
+          }
+        },
+        "cleaning": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "cleaning"
+          }
+        },
+        "organization": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "organization"
+          }
+        },
+        "comfort": {
+          "type": "featured_collection",
+          "settings": {
+            "collection": "comfort"
+          }
+        }
+      },
+      "block_order": [
+        "kitchen",
+        "cleaning",
+        "organization",
+        "comfort"
+      ],
+      "settings": {
+        "title": "Shop by room",
+        "heading_size": "h2",
+        "image_ratio": "square",
+        "columns_desktop": 4,
+        "color_scheme": "scheme-1",
+        "show_view_all": false,
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 48
+      }
+    },
+    "stats": {
+      "type": "stats-strip",
+      "blocks": {
+        "power": {
+          "type": "stat",
+          "settings": {
+            "value": "USB-C",
+            "label": "Rechargeable, no batteries to buy"
+          }
+        },
+        "tools": {
+          "type": "stat",
+          "settings": {
+            "value": "0 tools",
+            "label": "Magnetic plate, adhesive-mounted"
+          }
+        },
+        "colours": {
+          "type": "stat",
+          "settings": {
+            "value": "3",
+            "label": "Colour temperatures on every light"
+          }
+        },
+        "returns": {
+          "type": "stat",
+          "settings": {
+            "value": "30 days",
+            "label": "To return it if it is not right"
+          }
+        }
+      },
+      "block_order": [
+        "power",
+        "tools",
+        "colours",
+        "returns"
+      ],
+      "settings": {
+        "heading": "",
+        "heading_size": "h2",
+        "color_scheme": "scheme-5",
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "blocks": {
+        "hallway": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "title": "Hallway at 2 a.m.",
+            "quote": "<p>Mounted the 30 cm bar low on the wall between our bedroom and the bathroom. It comes on at ankle height when you walk past and shuts off a few seconds after you are gone. On the warm setting it is dim enough that nobody fully wakes up.</p>",
+            "author": "Priya S., Mississauga",
+            "verified": false
+          }
+        },
+        "kitchen": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 4,
+            "title": "Under-cabinet, finally",
+            "quote": "<p>Two 40 cm bars under the upper cabinets above the counter. Neutral white is the right call for cooking. Charging every few weeks is fine because the magnet mount makes taking them down a two-second job. I would have liked a longer cable.</p>",
+            "author": "Marc D., Gatineau",
+            "verified": false
+          }
+        },
+        "wardrobe": {
+          "type": "testimonial",
+          "settings": {
+            "rating": 5,
+            "title": "Wardrobe with no outlet",
+            "quote": "<p>Our closet has no light and no outlet nearby, so wiring was never going to happen. The 20 cm bar on the underside of the top shelf lights the whole rail when the door opens. Mounting took about a minute.</p>",
+            "author": "Alison T., Victoria",
+            "verified": false
+          }
+        }
+      },
+      "block_order": [
+        "hallway",
+        "kitchen",
+        "wardrobe"
+      ],
+      "settings": {
+        "eyebrow": "From customers",
+        "heading": "Fitted, charged, forgotten about",
+        "heading_size": "h2",
+        "subheading": "<p>The three places people put them most often.</p>",
+        "verified_label": "Verified buyer",
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "comparison": {
+      "type": "comparison-table",
+      "blocks": {
+        "power": {
+          "type": "row",
+          "settings": {
+            "feature": "Power",
+            "us": true,
+            "us_text": "USB-C rechargeable",
+            "them": true,
+            "them_text": "AA batteries or a wall plug"
+          }
+        },
+        "mount": {
+          "type": "row",
+          "settings": {
+            "feature": "Mounting",
+            "us": true,
+            "us_text": "Magnetic plate, no tools",
+            "them": true,
+            "them_text": "Screws or adhesive only"
+          }
+        },
+        "sensor": {
+          "type": "row",
+          "settings": {
+            "feature": "Motion sensor with auto-off delay",
+            "us": true,
+            "us_text": "",
+            "them": false,
+            "them_text": ""
+          }
+        },
+        "colour": {
+          "type": "row",
+          "settings": {
+            "feature": "Colour temperature",
+            "us": true,
+            "us_text": "3 settings",
+            "them": true,
+            "them_text": "Fixed"
+          }
+        },
+        "warranty": {
+          "type": "row",
+          "settings": {
+            "feature": "Replacement on defects",
+            "us": true,
+            "us_text": "12 months",
+            "them": true,
+            "them_text": "Varies, often none"
+          }
+        },
+        "delivery": {
+          "type": "row",
+          "settings": {
+            "feature": "Delivery",
+            "us": true,
+            "us_text": "8–15 business days, stated up front",
+            "them": true,
+            "them_text": "Same day from the store"
+          }
+        }
+      },
+      "block_order": [
+        "power",
+        "mount",
+        "sensor",
+        "colour",
+        "warranty",
+        "delivery"
+      ],
+      "settings": {
+        "heading": "Hearthlight vs. a hardware-store strip light",
+        "heading_size": "h2",
+        "subheading": "<p>What the difference in price buys you, and the one place the store still wins.</p>",
+        "us_label": "",
+        "them_label": "Hardware-store strip light",
+        "button_label": "Shop lighting",
+        "button_link": "shopify://collections/all",
+        "color_scheme": "scheme-2",
+        "padding_top": 48,
+        "padding_bottom": 48
+      }
+    },
+    "faq": {
+      "type": "collapsible-content",
+      "blocks": {
+        "battery": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How long does the battery last?",
+            "icon": "none",
+            "row_content": "<p>It depends on the mode. In motion mode the light is only on for a few seconds at a time, so a charge typically lasts weeks. In always-on mode it is a matter of hours. Charge with the included USB-C cable; exact battery figures for each size are in the specs on the product page.</p>"
+          }
+        },
+        "sensor": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How does the sensor work?",
+            "icon": "none",
+            "row_content": "<p>A passive infrared sensor detects body heat moving in front of it and switches the light on. Once movement stops, the light turns itself off after the set delay. There is also an always-on mode and an off position for when you do not want it triggering.</p>"
+          }
+        },
+        "wood": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "Will it stick to wood?",
+            "icon": "none",
+            "row_content": "<p>Yes. The magnetic plate mounts with the adhesive strip on its back, which holds on painted wood, laminate, melamine and metal. Clean the surface, press firmly for 30 seconds and give the adhesive a few hours before hanging the light. On unfinished or oiled wood, wipe with rubbing alcohol first so the adhesive has a clean surface to grip.</p>"
+          }
+        },
+        "delivery": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "How long does delivery take?",
+            "icon": "none",
+            "row_content": "<p>Most orders arrive in 8–15 business days; the estimate at checkout is the real one. You get a tracking number by email as soon as the order ships, and you can check it any time on the <a href=\"/pages/track-order\" title=\"Track order\">Track order</a> page.</p>"
+          }
+        },
+        "returns": {
+          "type": "collapsible_row",
+          "settings": {
+            "heading": "What if it is not right for my space?",
+            "icon": "none",
+            "row_content": "<p>Return it within 30 days of delivery for a refund. If a light develops a fault within 12 months, we replace it. Start either one from the <a href=\"/pages/contact\" title=\"Contact\">Contact</a> page with your order number.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "battery",
+        "sensor",
+        "wood",
+        "delivery",
+        "returns"
+      ],
+      "settings": {
+        "caption": "FAQ",
+        "heading": "Common questions",
+        "heading_size": "h2",
+        "heading_alignment": "left",
+        "layout": "row",
+        "container_color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
+        "open_first_collapsible_row": true,
+        "image_ratio": "adapt",
+        "desktop_layout": "image_second",
+        "padding_top": 36,
+        "padding_bottom": 48
+      }
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "New arrivals and restocks",
+            "heading_size": "h2"
+          }
+        },
+        "paragraph": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>One email a month, no spam.</p>"
+          }
+        },
+        "email_form": {
+          "type": "email_form"
+        }
+      },
+      "block_order": [
+        "heading",
+        "paragraph",
+        "email_form"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 48,
+        "padding_bottom": 56
+      }
+    }
+  },
+  "order": [
+    "hero",
+    "trust",
+    "best_sellers",
+    "why_it_works",
+    "featured_lamp",
+    "rooms",
+    "stats",
+    "testimonials",
+    "comparison",
+    "faq",
+    "newsletter"
+  ]
+}

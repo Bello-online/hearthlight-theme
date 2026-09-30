@@ -1,0 +1,82 @@
+{{ 'cro.css' | asset_url | stylesheet_tag }}
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{%- style -%}
+  .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px; padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px; }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding { padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; }
+  }
+{%- endstyle -%}
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width section-{{ section.id }}-padding">
+    {%- if section.settings.heading != blank or section.settings.subheading != blank -%}
+      <div class="testimonials__header center">
+        {%- if section.settings.eyebrow != blank -%}<p class="testimonials__eyebrow caption-with-letter-spacing">{{ section.settings.eyebrow | escape }}</p>{%- endif -%}
+        {%- if section.settings.heading != blank -%}<h2 class="testimonials__heading {{ section.settings.heading_size }}">{{ section.settings.heading | escape }}</h2>{%- endif -%}
+        {%- if section.settings.subheading != blank -%}<div class="testimonials__subheading rte">{{ section.settings.subheading }}</div>{%- endif -%}
+      </div>
+    {%- endif -%}
+    <slider-component class="slider-mobile-gutter">
+      <ul class="testimonials__grid grid grid--1-col grid--2-col-tablet grid--{{ section.settings.columns_desktop }}-col-desktop slider slider--mobile" id="Slider-{{ section.id }}" role="list">
+        {%- for block in section.blocks -%}
+          <li class="testimonials__item grid__item slider__slide" {{ block.shopify_attributes }}>
+            <article class="testimonial-card">
+              <div class="testimonial-card__stars" role="img" aria-label="{{ block.settings.rating }} out of 5 stars">
+                {%- for i in (1..5) -%}
+                  <svg class="testimonial-card__star{% if i > block.settings.rating %} testimonial-card__star--empty{% endif %}" viewBox="0 0 20 20" aria-hidden="true" focusable="false"><path d="M10 1.5l2.6 5.6 6.1.7-4.5 4.2 1.2 6L10 15l-5.4 3 1.2-6L1.3 7.8l6.1-.7z"/></svg>
+                {%- endfor -%}
+              </div>
+              {%- if block.settings.title != blank -%}<h3 class="testimonial-card__title h5">{{ block.settings.title | escape }}</h3>{%- endif -%}
+              <blockquote class="testimonial-card__quote">{{ block.settings.quote }}</blockquote>
+              <footer class="testimonial-card__footer">
+                <span class="testimonial-card__author">{{ block.settings.author | escape }}</span>
+                {%- if block.settings.verified -%}
+                  <span class="testimonial-card__verified">{% render 'icon-accordion', icon: 'check_mark' %} {{ section.settings.verified_label | escape }}</span>
+                {%- endif -%}
+              </footer>
+            </article>
+          </li>
+        {%- endfor -%}
+      </ul>
+      {%- if section.blocks.size > 1 -%}
+        <div class="slider-buttons small-hide">
+          <button type="button" class="slider-button slider-button--prev" name="previous" aria-label="{{ 'general.slider.previous_slide' | t }}"><span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span></button>
+          <div class="slider-counter caption"><span class="slider-counter--current">1</span><span aria-hidden="true"> / </span><span class="visually-hidden">{{ 'general.slider.of' | t }}</span><span class="slider-counter--total">{{ section.blocks.size }}</span></div>
+          <button type="button" class="slider-button slider-button--next" name="next" aria-label="{{ 'general.slider.next_slide' | t }}"><span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span></button>
+        </div>
+      {%- endif -%}
+    </slider-component>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "Testimonials",
+  "tag": "section",
+  "class": "section section-testimonials",
+  "max_blocks": 9,
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "What customers say" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Rated 4.8 out of 5" },
+    { "type": "select", "id": "heading_size", "label": "t:sections.all.heading_size.label", "default": "h1", "options": [ { "value": "h2", "label": "t:sections.all.heading_size.options__1.label" }, { "value": "h1", "label": "t:sections.all.heading_size.options__2.label" }, { "value": "h0", "label": "t:sections.all.heading_size.options__3.label" } ] },
+    { "type": "richtext", "id": "subheading", "label": "Subheading" },
+    { "type": "text", "id": "verified_label", "label": "Verified label", "default": "Verified buyer" },
+    { "type": "range", "id": "columns_desktop", "min": 2, "max": 4, "step": 1, "label": "Columns on desktop", "default": 3 },
+    { "type": "color_scheme", "id": "color_scheme", "label": "t:sections.all.colors.label", "default": "scheme-1" },
+    { "type": "range", "id": "padding_top", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_top", "default": 48 },
+    { "type": "range", "id": "padding_bottom", "min": 0, "max": 100, "step": 4, "unit": "px", "label": "t:sections.all.padding.padding_bottom", "default": 48 }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Testimonial",
+      "settings": [
+        { "type": "range", "id": "rating", "min": 1, "max": 5, "step": 1, "label": "Stars", "default": 5 },
+        { "type": "text", "id": "title", "label": "Title", "default": "Exactly what it says" },
+        { "type": "richtext", "id": "quote", "label": "Quote", "default": "<p>Ordered on a Tuesday, arrived Thursday. Does what the page said it would.</p>" },
+        { "type": "text", "id": "author", "label": "Author", "default": "Jordan K." },
+        { "type": "checkbox", "id": "verified", "label": "Show verified badge", "default": true }
+      ]
+    }
+  ],
+  "presets": [ { "name": "Testimonials", "blocks": [ { "type": "testimonial" }, { "type": "testimonial" }, { "type": "testimonial" } ] } ]
+}
+{% endschema %}

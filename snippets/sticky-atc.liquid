@@ -1,0 +1,19 @@
+{%- comment -%} Sticky add-to-cart bar for product pages. Rendered from layout/theme.liquid when template is product and settings.sticky_atc_enabled is true. {%- endcomment -%}
+{%- if product and settings.sticky_atc_enabled -%}
+  {{ 'sticky-atc.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'sticky-atc.js' | asset_url }}" defer="defer"></script>
+  <sticky-atc class="sticky-atc color-{{ settings.sticky_atc_color_scheme }} gradient" hidden>
+    <div class="page-width sticky-atc__inner">
+      {%- if product.featured_media -%}
+        <img class="sticky-atc__image" src="{{ product.featured_media | image_url: width: 120 }}" width="60" height="60" alt="" loading="lazy">
+      {%- endif -%}
+      <div class="sticky-atc__meta">
+        <span class="sticky-atc__title">{{ product.title | escape }}</span>
+        <span class="sticky-atc__price" data-sticky-price>{{ product.selected_or_first_available_variant.price | money }}</span>
+      </div>
+      <button type="button" class="button button--primary sticky-atc__button" data-sticky-submit>
+        <span data-sticky-label>{{ 'products.product.add_to_cart' | t }}</span>
+      </button>
+    </div>
+  </sticky-atc>
+{%- endif -%}

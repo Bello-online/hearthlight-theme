@@ -1,0 +1,208 @@
+/* Hearthlight hero: full-bleed image, scheme-coloured gradient overlay, copy bottom-left, spec chips.
+   Colours come from Dawn's scheme variables so the section follows whichever scheme is picked. */
+
+.hl-hero {
+  position: relative;
+  display: grid;
+  min-height: 70vh;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+@media screen and (min-width: 750px) {
+  .hl-hero {
+    min-height: 82vh;
+  }
+}
+
+/* Media */
+.hl-hero__media {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.hl-hero__media picture,
+.hl-hero__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hl-hero__img {
+  object-fit: cover;
+  object-position: center;
+}
+
+.hl-hero__media--placeholder {
+  background: rgba(var(--color-foreground), 0.04);
+}
+
+.hl-hero__media--placeholder .placeholder-svg {
+  fill: rgba(var(--color-foreground), 0.5);
+  opacity: 0.35;
+}
+
+/* Overlay: strongest bottom-left, clear top-right. --hl-hero-overlay is set per section from the range setting. */
+.hl-hero__overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(
+      to top right,
+      rgba(var(--color-background), var(--hl-hero-overlay, 0.7)) 0%,
+      rgba(var(--color-background), calc(var(--hl-hero-overlay, 0.7) * 0.6)) 40%,
+      rgba(var(--color-background), 0) 100%
+    ),
+    linear-gradient(
+      to top,
+      rgba(var(--color-background), var(--hl-hero-overlay, 0.7)) 0%,
+      rgba(var(--color-background), calc(var(--hl-hero-overlay, 0.7) * 0.5)) 30%,
+      rgba(var(--color-background), 0) 60%
+    );
+}
+
+/* Content */
+.hl-hero__content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  width: 100%;
+  align-self: end;
+}
+
+.hl-hero__inner {
+  max-width: 64rem;
+  animation: hl-hero-rise 0.6s var(--hl-ease, ease-out) both;
+}
+
+.hl-hero--center .hl-hero__content {
+  align-self: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.hl-hero--bottom-center .hl-hero__content {
+  justify-content: center;
+  text-align: center;
+}
+
+.hl-hero--center .hl-hero__inner,
+.hl-hero--bottom-center .hl-hero__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hl-hero__eyebrow {
+  margin: 0 0 1.4rem;
+  color: rgb(var(--color-button));
+  font-family: var(--font-body-family);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.hl-hero__heading {
+  margin: 0 0 1.6rem;
+  max-width: 14ch;
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-heading-family);
+  font-weight: 500;
+  font-size: clamp(3.4rem, 5.5vw, 7.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.hl-hero__text {
+  margin: 0 0 2.4rem;
+  max-width: 52ch;
+  color: rgba(var(--color-foreground), 0.85);
+  font-size: 1.6rem;
+  line-height: 1.5;
+}
+
+@media screen and (min-width: 750px) {
+  .hl-hero__text {
+    font-size: 1.8rem;
+  }
+}
+
+.hl-hero__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+.hl-hero--center .hl-hero__buttons,
+.hl-hero--bottom-center .hl-hero__buttons {
+  justify-content: center;
+}
+
+/* Spec chips */
+.hl-hero__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 2.8rem 0 0;
+  padding: 0;
+}
+
+.hl-hero--center .hl-hero__chips,
+.hl-hero--bottom-center .hl-hero__chips {
+  justify-content: center;
+}
+
+.hl-hero__chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 0.7rem 1.4rem 0.7rem 1rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.25);
+  border-radius: 99rem;
+  background: rgba(var(--color-background), 0.4);
+  color: rgb(var(--color-foreground));
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+@supports ((backdrop-filter: blur(6px)) or (-webkit-backdrop-filter: blur(6px))) {
+  .hl-hero__chip {
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+}
+
+.hl-hero__chip-icon {
+  display: inline-flex;
+  color: rgb(var(--color-button));
+}
+
+.hl-hero__chip-icon svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+@keyframes hl-hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(1.2rem);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hl-hero__inner {
+    animation: none;
+  }
+}

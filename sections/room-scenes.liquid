@@ -1,0 +1,209 @@
+{{ 'section-room-scenes.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'room-scenes.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="room-scenes color-{{ section.settings.color_scheme }} gradient" data-room-scenes>
+  <div class="page-width section-{{ section.id }}-padding">
+    <div class="room-scenes__header">
+      <div class="room-scenes__copy">
+        {%- if section.settings.heading != blank -%}
+          <h2 class="room-scenes__heading h2" id="RoomScenes-{{ section.id }}">{{ section.settings.heading | escape }}</h2>
+        {%- endif -%}
+        {%- if section.settings.subheading != blank -%}
+          <div class="room-scenes__subheading rte">{{ section.settings.subheading }}</div>
+        {%- endif -%}
+      </div>
+      <div class="room-scenes__controls">
+        <button type="button" class="room-scenes__button" data-prev aria-label="Previous scene" aria-controls="RoomScenesTrack-{{ section.id }}">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m15 5-7 7 7 7"/></svg>
+        </button>
+        <button type="button" class="room-scenes__button" data-next aria-label="Next scene" aria-controls="RoomScenesTrack-{{ section.id }}">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m9 5 7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <ul
+      class="room-scenes__track list-unstyled"
+      id="RoomScenesTrack-{{ section.id }}"
+      role="list"
+      aria-labelledby="RoomScenes-{{ section.id }}"
+      data-track
+    >
+      {%- for block in section.blocks -%}
+        <li class="room-scenes__card" data-card {{ block.shopify_attributes }}>
+          <div class="room-scenes__media{% if block.settings.image == blank %} room-scenes__media--placeholder{% endif %}">
+            {%- if block.settings.image != blank -%}
+              {{
+                block.settings.image
+                | image_url: width: 1100
+                | image_tag:
+                  widths: '375, 550, 750, 1100',
+                  sizes: '(min-width: 990px) 44rem, (min-width: 750px) 33vw, 87vw',
+                  loading: 'lazy',
+                  class: 'room-scenes__img'
+              }}
+            {%- else -%}
+              {{ 'lifestyle-1' | placeholder_svg_tag: 'room-scenes__img placeholder-svg' }}
+            {%- endif -%}
+          </div>
+          <div class="room-scenes__shade" aria-hidden="true"></div>
+          {%- if block.settings.room != blank -%}
+            <span class="room-scenes__room">{{ block.settings.room | escape }}</span>
+          {%- endif -%}
+          <div class="room-scenes__body">
+            {%- if block.settings.heading != blank -%}
+              <h3 class="room-scenes__title">{{ block.settings.heading | escape }}</h3>
+            {%- endif -%}
+            {%- if block.settings.text != blank -%}
+              <p class="room-scenes__text">{{ block.settings.text | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.link_label != blank and block.settings.link != blank -%}
+              <a class="room-scenes__link" href="{{ block.settings.link }}">
+                {{- block.settings.link_label | escape -}}
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </a>
+            {%- endif -%}
+          </div>
+        </li>
+      {%- endfor -%}
+    </ul>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Room scenes",
+  "tag": "section",
+  "class": "section section-room-scenes",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "One light, every dark corner"
+    },
+    {
+      "type": "richtext",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "<p>The same bar, three rooms. Pick the length and colour temperature for the spot.</p>"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 48
+    }
+  ],
+  "blocks": [
+    {
+      "type": "scene",
+      "name": "Scene",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image",
+          "info": "Portrait, 4:5. 1100 x 1375 px recommended."
+        },
+        {
+          "type": "text",
+          "id": "room",
+          "label": "Room label",
+          "default": "Hallway"
+        },
+        {
+          "type": "text",
+          "id": "heading",
+          "label": "Heading",
+          "default": "Lit at ankle height, off before you are back in bed"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Text",
+          "default": "Mount the 30 cm bar low on the wall. Warm white, motion mode, 20-second delay."
+        },
+        {
+          "type": "text",
+          "id": "link_label",
+          "label": "Link label",
+          "default": "Shop hallway lights"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Room scenes",
+      "blocks": [
+        { "type": "scene" },
+        {
+          "type": "scene",
+          "settings": {
+            "room": "Kitchen",
+            "heading": "Under-cabinet light that reaches the back of the counter",
+            "text": "Two 40 cm bars under the upper cabinets. Neutral white shows food colours properly.",
+            "link_label": "Shop kitchen lights"
+          }
+        },
+        {
+          "type": "scene",
+          "settings": {
+            "room": "Wardrobe",
+            "heading": "Light where there is no outlet and never will be",
+            "text": "A 20 cm bar under the top shelf. Cool white so navy and black are not the same colour.",
+            "link_label": "Shop wardrobe lights"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

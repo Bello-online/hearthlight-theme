@@ -1,0 +1,272 @@
+{{ 'section-hearthlight-hero.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  #Hero-{{ section.id }} {
+    --hl-hero-overlay: {{ section.settings.overlay_strength | divided_by: 100.0 }};
+  }
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div
+  id="Hero-{{ section.id }}"
+  class="hl-hero hl-hero--{{ section.settings.content_position }} color-{{ section.settings.color_scheme }} gradient"
+>
+  <div class="hl-hero__media{% if section.settings.image == blank %} hl-hero__media--placeholder{% endif %}">
+    {%- if section.settings.image != blank -%}
+      <picture>
+        {%- if section.settings.mobile_image != blank -%}
+          <source
+            media="(max-width: 749px)"
+            srcset="
+              {{ section.settings.mobile_image | image_url: width: 750 }} 750w,
+              {{ section.settings.mobile_image | image_url: width: 1100 }} 1100w,
+              {{ section.settings.mobile_image | image_url: width: 1500 }} 1500w
+            "
+            sizes="100vw"
+          >
+        {%- endif -%}
+        {{
+          section.settings.image
+          | image_url: width: 2400
+          | image_tag:
+            widths: '750, 1100, 1500, 2000, 2400',
+            sizes: '100vw',
+            loading: 'eager',
+            fetchpriority: 'high',
+            class: 'hl-hero__img'
+        }}
+      </picture>
+    {%- else -%}
+      {{ 'lifestyle-2' | placeholder_svg_tag: 'hl-hero__img placeholder-svg' }}
+    {%- endif -%}
+  </div>
+  <div class="hl-hero__overlay" aria-hidden="true"></div>
+
+  <div class="hl-hero__content page-width section-{{ section.id }}-padding">
+    <div class="hl-hero__inner">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="hl-hero__eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h1 class="hl-hero__heading">{{ section.settings.heading | escape }}</h1>
+      {%- endif -%}
+      {%- if section.settings.text != blank -%}
+        <p class="hl-hero__text">{{ section.settings.text | escape }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.button_label_1 != blank or section.settings.button_label_2 != blank -%}
+        <div class="hl-hero__buttons">
+          {%- if section.settings.button_label_1 != blank -%}
+            <a
+              {% if section.settings.button_link_1 == blank %}
+                role="link" aria-disabled="true"
+              {% else %}
+                href="{{ section.settings.button_link_1 }}"
+              {% endif %}
+              class="button"
+            >
+              {{- section.settings.button_label_1 | escape -}}
+            </a>
+          {%- endif -%}
+          {%- if section.settings.button_label_2 != blank -%}
+            <a
+              {% if section.settings.button_link_2 == blank %}
+                role="link" aria-disabled="true"
+              {% else %}
+                href="{{ section.settings.button_link_2 }}"
+              {% endif %}
+              class="button button--secondary"
+            >
+              {{- section.settings.button_label_2 | escape -}}
+            </a>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.blocks.size > 0 -%}
+        <ul class="hl-hero__chips list-unstyled" role="list">
+          {%- for block in section.blocks -%}
+            <li class="hl-hero__chip" {{ block.shopify_attributes }}>
+              <span class="hl-hero__chip-icon">{% render 'icon-hearthlight', icon: block.settings.icon %}</span>
+              <span class="hl-hero__chip-label">{{ block.settings.label | escape }}</span>
+            </li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Hearthlight hero",
+  "tag": "section",
+  "class": "section section-hearthlight-hero",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "max_blocks": 5,
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "2400 x 1340 px recommended. Keep the right third dark and uncluttered so the copy reads."
+    },
+    {
+      "type": "image_picker",
+      "id": "mobile_image",
+      "label": "Mobile image (optional)",
+      "info": "Portrait crop shown below 750 px. Falls back to the main image."
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Motion-sensor lighting"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Light that turns on before you reach for the switch."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Text",
+      "default": "Rechargeable, magnetic, and lit in about a minute with no tools and no wiring."
+    },
+    {
+      "type": "header",
+      "content": "Buttons"
+    },
+    {
+      "type": "text",
+      "id": "button_label_1",
+      "label": "First button label",
+      "default": "Shop lighting"
+    },
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "First button link"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Second button label",
+      "default": "How we choose"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Second button link"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "overlay_strength",
+      "min": 0,
+      "max": 100,
+      "step": 5,
+      "unit": "%",
+      "label": "Overlay strength",
+      "info": "Gradient in the scheme background colour, strongest at the bottom-left.",
+      "default": 70
+    },
+    {
+      "type": "select",
+      "id": "content_position",
+      "label": "Content position",
+      "options": [
+        { "value": "bottom-left", "label": "Bottom left" },
+        { "value": "center", "label": "Centre" },
+        { "value": "bottom-center", "label": "Bottom centre" }
+      ],
+      "default": "bottom-left"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.all.padding.section_padding_heading"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_top",
+      "default": 64
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "t:sections.all.padding.padding_bottom",
+      "default": 56
+    }
+  ],
+  "blocks": [
+    {
+      "type": "chip",
+      "name": "Spec chip",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "bolt", "label": "Bolt" },
+            { "value": "sensor", "label": "Sensor" },
+            { "value": "magnet", "label": "Magnet" },
+            { "value": "palette", "label": "Palette" },
+            { "value": "battery", "label": "Battery" },
+            { "value": "usb", "label": "USB-C" }
+          ],
+          "default": "bolt"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "USB-C rechargeable"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hearthlight hero",
+      "blocks": [
+        { "type": "chip", "settings": { "icon": "usb", "label": "USB-C rechargeable" } },
+        { "type": "chip", "settings": { "icon": "sensor", "label": "Motion sensor" } },
+        { "type": "chip", "settings": { "icon": "magnet", "label": "Magnetic mount" } },
+        { "type": "chip", "settings": { "icon": "palette", "label": "3 colour temperatures" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

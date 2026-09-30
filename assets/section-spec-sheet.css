@@ -1,0 +1,187 @@
+/* Spec sheet: technical spec cards in a <dl> grid, plus an "In the box" checklist panel. */
+
+.spec-sheet__header {
+  max-width: 72rem;
+  margin-bottom: 2.8rem;
+}
+
+.spec-sheet__heading {
+  margin: 0;
+}
+
+.spec-sheet__intro {
+  margin-top: 1.2rem;
+  color: rgba(var(--color-foreground), 0.8);
+}
+
+.spec-sheet__intro p {
+  margin: 0;
+}
+
+/* Grid of cards */
+.spec-sheet__grid {
+  display: grid;
+  gap: 1.2rem;
+  margin: 0;
+  grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 600px) {
+  .spec-sheet__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .spec-sheet__grid--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.spec-sheet__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  min-height: 14rem;
+  padding: 2rem 2rem 1.8rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.1);
+  border-radius: var(--text-boxes-radius, 1.2rem);
+  background: rgba(var(--color-foreground), 0.04);
+  transition: border-color 0.2s var(--hl-ease, ease);
+}
+
+.spec-sheet__card:hover {
+  border-color: rgba(var(--color-foreground), 0.22);
+}
+
+.spec-sheet__icon {
+  display: inline-flex;
+  width: 3.6rem;
+  height: 3.6rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.6rem;
+  border-radius: 0.8rem;
+  background: rgba(var(--color-button), 0.12);
+  color: rgb(var(--color-button));
+}
+
+.spec-sheet__icon svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.spec-sheet__label {
+  margin: 0;
+  color: rgba(var(--color-foreground), 0.7);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.spec-sheet__value {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0;
+}
+
+.spec-sheet__figure {
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-heading-family);
+  font-weight: 500;
+  font-size: 2.4rem;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+
+.spec-sheet__note {
+  color: rgba(var(--color-foreground), 0.65);
+  font-size: 1.3rem;
+  line-height: 1.4;
+}
+
+/* Metafield fallback */
+.spec-sheet__metafield {
+  max-width: 72rem;
+  padding: 2.4rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.1);
+  border-radius: var(--text-boxes-radius, 1.2rem);
+  background: rgba(var(--color-foreground), 0.04);
+}
+
+/* In the box */
+.spec-sheet__box {
+  margin-top: 2rem;
+  padding: 2.4rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.14);
+  border-radius: var(--text-boxes-radius, 1.2rem);
+}
+
+@media screen and (min-width: 750px) {
+  .spec-sheet__box {
+    display: grid;
+    grid-template-columns: minmax(0, 24rem) 1fr;
+    gap: 3.2rem;
+    align-items: start;
+    padding: 2.8rem 3.2rem;
+  }
+}
+
+.spec-sheet__box-heading {
+  margin: 0 0 1.2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .spec-sheet__box-heading {
+    margin-bottom: 0;
+  }
+}
+
+.spec-sheet__box-list ul {
+  display: grid;
+  gap: 0.8rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+@media screen and (min-width: 750px) {
+  .spec-sheet__box-list ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 2.4rem;
+  }
+}
+
+.spec-sheet__box-list li {
+  position: relative;
+  padding-left: 3rem;
+  line-height: 1.5;
+}
+
+/* Check mark drawn as an SVG mask so it takes the scheme's button colour. */
+.spec-sheet__box-list li::before {
+  content: '';
+  position: absolute;
+  top: 0.25em;
+  left: 0;
+  width: 1.8rem;
+  height: 1.8rem;
+  background-color: rgb(var(--color-button));
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='m8 12 3 3 5-6'/%3E%3C/svg%3E") no-repeat center / contain;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpath d='m8 12 3 3 5-6'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+.spec-sheet__box-list p {
+  margin: 0 0 0.8rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spec-sheet__card {
+    transition: none;
+  }
+}

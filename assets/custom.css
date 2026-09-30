@@ -112,13 +112,62 @@ h1, h2, h3, .h0, .h1, .h2, .h3, .banner__heading, .title, .product__title h1, .s
   border-left: 0.1rem solid rgba(var(--color-foreground), 0.1);
 }
 
+/* Product page: the info column sits on a raised card so it reads as a distinct panel on dark. */
+@media screen and (min-width: 990px) {
+  .product .product__info-container {
+    background: rgba(255, 255, 255, 0.03);
+    border: 0.1rem solid rgba(var(--color-foreground), 0.08);
+    border-radius: 1.2rem;
+    padding: 2.4rem;
+  }
+  .product .product__info-container > :first-child {
+    margin-top: 0;
+  }
+}
+.product__info-container .price {
+  font-size: 2.2rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+.product__info-container .price--large {
+  font-size: 2.2rem;
+}
+.product__info-container .product-form__submit,
+.product__info-container .shopify-payment-button__button {
+  min-height: 4.8rem;
+}
+
+/* Variant pills: hairline borders, amber for the selected option. */
+.product-form__input--pill input[type='radio'] + label {
+  border-width: 0.1rem;
+  border-color: rgba(var(--color-foreground), 0.25);
+  background-color: transparent;
+  letter-spacing: 0.02em;
+  font-weight: 600;
+}
+.product-form__input--pill input[type='radio'] + label:hover {
+  border-color: rgba(var(--color-foreground), 0.6);
+}
+.product-form__input--pill input[type='radio']:checked + label {
+  border-color: rgb(var(--color-button));
+  background-color: rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
+}
+.product-form__input--pill input[type='radio']:focus-visible + label {
+  outline: 0.2rem solid rgb(var(--color-button));
+  outline-offset: 0.2rem;
+  box-shadow: none;
+}
+
 /* Reduced motion: keep hover states, drop the movement. */
 @media (prefers-reduced-motion: reduce) {
   .button,
   .card-wrapper .card,
   .card-wrapper .card__inner,
   .product-form__submit,
-  .sticky-atc__button {
+  .sticky-atc__button,
+  .product-form__input--pill input[type='radio'] + label {
     transition: none;
   }
   .card-wrapper:hover .card--card,

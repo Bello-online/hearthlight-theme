@@ -1,0 +1,263 @@
+/* Room scenes: horizontal scroll-snap track of 4:5 image cards, three visible on desktop, 1.15 on mobile.
+   The track owns its own overflow so the page never scrolls sideways. */
+
+.room-scenes {
+  --room-scenes-gap: 1.6rem;
+  --room-scenes-visible: 1.15;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 750px) {
+  .room-scenes {
+    --room-scenes-gap: 2rem;
+    --room-scenes-visible: 2.2;
+  }
+}
+
+@media screen and (min-width: 990px) {
+  .room-scenes {
+    --room-scenes-visible: 3;
+  }
+}
+
+/* Header */
+.room-scenes__header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2.4rem;
+  margin-bottom: 2.4rem;
+}
+
+.room-scenes__copy {
+  max-width: 64rem;
+}
+
+.room-scenes__heading {
+  margin: 0;
+}
+
+.room-scenes__subheading {
+  margin-top: 1rem;
+  color: rgba(var(--color-foreground), 0.8);
+}
+
+.room-scenes__subheading p {
+  margin: 0;
+}
+
+.room-scenes__controls {
+  display: none;
+  flex-shrink: 0;
+  gap: 0.8rem;
+}
+
+.room-scenes--overflow .room-scenes__controls {
+  display: flex;
+}
+
+.room-scenes__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.4rem;
+  height: 4.4rem;
+  padding: 0;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.25);
+  border-radius: 50%;
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  cursor: pointer;
+  transition: border-color 0.2s var(--hl-ease, ease), background-color 0.2s var(--hl-ease, ease);
+}
+
+.room-scenes__button:hover:not(:disabled) {
+  border-color: rgba(var(--color-foreground), 0.6);
+  background: rgba(var(--color-foreground), 0.06);
+}
+
+.room-scenes__button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+/* Track */
+.room-scenes__track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - (var(--room-scenes-visible) - 1) * var(--room-scenes-gap)) / var(--room-scenes-visible));
+  gap: var(--room-scenes-gap);
+  margin: 0;
+  padding: 0.4rem 0 1.2rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.room-scenes__track::-webkit-scrollbar {
+  display: none;
+}
+
+.room-scenes__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 0;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: var(--media-radius, 1.2rem);
+  background: rgba(var(--color-foreground), 0.04);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  isolation: isolate;
+}
+
+.room-scenes__media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.room-scenes__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--hl-ease, ease);
+}
+
+.room-scenes__media--placeholder .placeholder-svg {
+  fill: rgba(var(--color-foreground), 0.5);
+  opacity: 0.35;
+}
+
+.room-scenes__card:hover .room-scenes__img,
+.room-scenes__card:focus-within .room-scenes__img {
+  transform: scale(1.03);
+}
+
+.room-scenes__shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(
+    to top,
+    rgba(var(--color-background), 0.94) 0%,
+    rgba(var(--color-background), 0.6) 38%,
+    rgba(var(--color-background), 0) 72%
+  );
+}
+
+.room-scenes__room {
+  position: absolute;
+  top: 1.2rem;
+  left: 1.2rem;
+  z-index: 2;
+  padding: 0.6rem 1.1rem;
+  border: 0.1rem solid rgba(var(--color-foreground), 0.25);
+  border-radius: 99rem;
+  background: rgba(var(--color-background), 0.6);
+  color: rgb(var(--color-foreground));
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+@supports ((backdrop-filter: blur(6px)) or (-webkit-backdrop-filter: blur(6px))) {
+  .room-scenes__room {
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+  }
+}
+
+.room-scenes__body {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .room-scenes__body {
+    padding: 2.4rem;
+  }
+}
+
+.room-scenes__title {
+  margin: 0 0 0.8rem;
+  color: rgb(var(--color-foreground));
+  font-family: var(--font-heading-family);
+  font-weight: 500;
+  font-size: 2rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+@media screen and (min-width: 750px) {
+  .room-scenes__title {
+    font-size: 2.2rem;
+  }
+}
+
+.room-scenes__text {
+  margin: 0;
+  color: rgba(var(--color-foreground), 0.85);
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+
+.room-scenes__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-top: 1.4rem;
+  color: rgb(var(--color-button));
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.room-scenes__link:hover {
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+/* Stretched link: the whole card is clickable, the visible link keeps the accessible name. */
+.room-scenes__link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+
+.room-scenes__link:focus-visible {
+  outline: none;
+  box-shadow: none;
+}
+
+.room-scenes__card:focus-within {
+  outline: 0.2rem solid rgb(var(--color-button));
+  outline-offset: -0.4rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .room-scenes__track {
+    scroll-behavior: auto;
+  }
+
+  .room-scenes__img,
+  .room-scenes__button {
+    transition: none;
+  }
+
+  .room-scenes__card:hover .room-scenes__img,
+  .room-scenes__card:focus-within .room-scenes__img {
+    transform: none;
+  }
+}

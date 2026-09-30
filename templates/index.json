@@ -1,51 +1,57 @@
 {
   "sections": {
     "hero": {
-      "type": "image-banner",
+      "type": "hearthlight-hero",
       "blocks": {
-        "heading": {
-          "type": "heading",
+        "usb": {
+          "type": "chip",
           "settings": {
-            "heading": "Light that turns on before you reach for the switch.",
-            "heading_size": "h0"
+            "icon": "usb",
+            "label": "USB-C rechargeable"
           }
         },
-        "text": {
-          "type": "text",
+        "sensor": {
+          "type": "chip",
           "settings": {
-            "text": "Motion-sensor lights that charge over USB-C and mount magnetically, so a hallway, cabinet or wardrobe is lit in about a minute with no tools and no wiring.",
-            "text_style": "body"
+            "icon": "sensor",
+            "label": "Motion sensor"
           }
         },
-        "buttons": {
-          "type": "buttons",
+        "magnet": {
+          "type": "chip",
           "settings": {
-            "button_label_1": "Shop lighting",
-            "button_link_1": "shopify://collections/all",
-            "button_style_secondary_1": false,
-            "button_label_2": "How we choose",
-            "button_link_2": "shopify://pages/how-we-choose",
-            "button_style_secondary_2": true
+            "icon": "magnet",
+            "label": "Magnetic mount"
+          }
+        },
+        "palette": {
+          "type": "chip",
+          "settings": {
+            "icon": "palette",
+            "label": "3 colour temps"
           }
         }
       },
       "block_order": [
-        "heading",
-        "text",
-        "buttons"
+        "usb",
+        "sensor",
+        "magnet",
+        "palette"
       ],
       "settings": {
-        "image_overlay_opacity": 20,
-        "image_height": "large",
-        "image_behavior": "none",
-        "desktop_content_position": "middle-left",
-        "desktop_content_alignment": "left",
-        "show_text_box": true,
-        "color_scheme": "scheme-2",
-        "stack_images_on_mobile": true,
-        "mobile_content_alignment": "left",
-        "show_text_below": true,
-        "image": "shopify://shop_images/hearthlight-hero.jpg"
+        "image": "shopify://shop_images/hearthlight-hero.jpg",
+        "eyebrow": "Motion-sensor lighting",
+        "heading": "Light that turns on before you reach for the switch.",
+        "text": "Motion-sensor lights that charge over USB-C and mount magnetically, so a hallway, cabinet or wardrobe is lit in about a minute with no tools and no wiring.",
+        "button_label_1": "Shop lighting",
+        "button_link_1": "shopify://collections/all",
+        "button_label_2": "How we choose",
+        "button_link_2": "shopify://pages/how-we-choose",
+        "color_scheme": "scheme-1",
+        "overlay_strength": 70,
+        "content_position": "bottom-left",
+        "padding_top": 64,
+        "padding_bottom": 56
       }
     },
     "trust": {
@@ -125,55 +131,50 @@
       }
     },
     "why_it_works": {
-      "type": "multicolumn",
+      "type": "room-scenes",
       "blocks": {
-        "sensor": {
-          "type": "column",
+        "hallway": {
+          "type": "scene",
           "settings": {
-            "title": "Motion sensor with adjustable delay",
-            "text": "<p>An infrared sensor turns the light on when someone moves in front of it and off again after a set delay. Hallways and closets are lit only while you are actually there.</p>",
-            "link_label": "",
-            "link": "",
-            "image": "shopify://shop_images/hearthlight-kitchen.jpg"
+            "image": "shopify://shop_images/hearthlight-hero.jpg",
+            "room": "Hallway",
+            "heading": "Lit at ankle height, off before you are back in bed",
+            "text": "A 30 cm bar mounted low on the wall. Warm white, motion mode, 20-second delay, so nobody fully wakes up.",
+            "link_label": "Shop hallway lights",
+            "link": "shopify://collections/all"
           }
         },
-        "mount": {
-          "type": "column",
+        "kitchen": {
+          "type": "scene",
           "settings": {
-            "title": "Magnetic mount, no drilling",
-            "text": "<p>A slim metal plate sticks to the surface; the light snaps onto it magnetically. Pull it off to charge, snap it back when it is done. No screws, no wiring, no electrician.</p>",
-            "link_label": "",
-            "link": ""
+            "image": "shopify://shop_images/hearthlight-kitchen.jpg",
+            "room": "Kitchen",
+            "heading": "Under-cabinet light that reaches the back of the counter",
+            "text": "Two 40 cm bars under the upper cabinets. Neutral white shows food colours properly; pull them off the magnet to charge.",
+            "link_label": "Shop kitchen lights",
+            "link": "shopify://collections/all"
           }
         },
-        "colour": {
-          "type": "column",
+        "wardrobe": {
+          "type": "scene",
           "settings": {
-            "title": "Three colour temperatures",
-            "text": "<p>Warm, neutral or cool white. Warm for a hallway at night, neutral under kitchen cabinets, cool inside a wardrobe where you need to see true colours.</p>",
-            "link_label": "",
-            "link": ""
+            "room": "Wardrobe",
+            "heading": "Light where there is no outlet and never will be",
+            "text": "A 20 cm bar under the top shelf lights the whole rail when the door opens. Cool white so navy and black are not the same colour.",
+            "link_label": "Shop wardrobe lights",
+            "link": "shopify://collections/all"
           }
         }
       },
       "block_order": [
-        "sensor",
-        "mount",
-        "colour"
+        "hallway",
+        "kitchen",
+        "wardrobe"
       ],
       "settings": {
-        "title": "Why it works",
-        "heading_size": "h2",
-        "image_width": "third",
-        "image_ratio": "adapt",
-        "columns_desktop": 3,
-        "column_alignment": "left",
-        "background_style": "primary",
-        "button_label": "",
-        "button_link": "",
+        "heading": "One light, every dark corner",
+        "subheading": "<p>The same bar, three rooms. Pick the length and colour temperature for the spot.</p>",
         "color_scheme": "scheme-1",
-        "columns_mobile": "1",
-        "swipe_on_mobile": false,
         "padding_top": 36,
         "padding_bottom": 48
       }

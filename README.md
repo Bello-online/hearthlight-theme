@@ -86,3 +86,13 @@ The theme ships with structure and copy, not media. Before publishing:
 ## Licence
 
 Dawn is released under the MIT licence; see `LICENSE.md`. Hearthlight-specific files follow the same licence.
+
+## Custom sections (Hearthlight-specific)
+
+Hand-coded sections with their own markup and CSS. Each has a preset so it appears under "Add section" in the theme editor.
+
+- **Hearthlight hero** (`sections/hearthlight-hero.liquid`): full-bleed cinematic image with a scheme-aware gradient overlay, eyebrow, headline, one-line paragraph, two buttons and a row of spec chips (blocks: `chip` with an inline icon and label). Settings include `image`, optional `mobile_image`, `overlay_strength`, `content_position` and colour scheme. Icons are drawn by `snippets/icon-hearthlight.liquid`.
+- **Spec sheet** (`sections/spec-sheet.liquid`): product-page technical grid rendered as a `<dl>` of cards (blocks: `spec` with icon, label, value, note) plus an optional "What's in the box" checklist. If a product has no spec blocks and a `custom.specs` rich-text metafield, that metafield renders instead, so specs can be filled per product in the admin.
+- **Room scenes** (`sections/room-scenes.liquid` + `assets/room-scenes.js`): horizontal scroll-snap strip of room cards (blocks: `scene` with image, room label, heading, text, link). Prev/next buttons scroll one card at a time; keyboard accessible; respects reduced motion.
+
+The homepage uses the hero and room scenes (hallway and kitchen images from Files, wardrobe on a placeholder until a photo is added). The product template adds the spec sheet directly under the product with bracketed placeholder values that must be replaced with real figures.

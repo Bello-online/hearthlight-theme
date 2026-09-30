@@ -1,0 +1,63 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "shipping": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "heading": "Free shipping over $75",
+            "text": "Canada-wide, applied automatically at checkout"
+          }
+        },
+        "returns": {
+          "type": "item",
+          "settings": {
+            "icon": "return",
+            "heading": "30-day returns",
+            "text": "Unused, in the original packaging"
+          }
+        },
+        "warranty": {
+          "type": "item",
+          "settings": {
+            "icon": "check_mark",
+            "heading": "12-month replacement",
+            "text": "On manufacturing defects, no arguments"
+          }
+        },
+        "delivery": {
+          "type": "item",
+          "settings": {
+            "icon": "stopwatch",
+            "heading": "8–15 business days",
+            "text": "Typical delivery; the checkout estimate is the real one"
+          }
+        }
+      },
+      "block_order": [
+        "shipping",
+        "returns",
+        "warranty",
+        "delivery"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    }
+  },
+  "order": [
+    "main",
+    "trust"
+  ]
+}

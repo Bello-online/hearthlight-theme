@@ -1,0 +1,55 @@
+/* Shared conversion components: trust bar, testimonials, comparison, stats, free-shipping bar */
+.trust-bar{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.6rem 2rem;margin:0}
+@media screen and (min-width:750px){.trust-bar{grid-template-columns:repeat(var(--trust-cols,4),minmax(0,1fr))}.trust-bar--3{--trust-cols:3}.trust-bar--5{--trust-cols:5}.trust-bar--6{--trust-cols:6}.trust-bar--2{--trust-cols:2}}
+.trust-bar__item{display:flex;align-items:flex-start;gap:1.2rem}
+.trust-bar__icon{flex:0 0 auto;width:2.8rem;height:2.8rem;display:inline-flex;align-items:center;justify-content:center;color:rgb(var(--color-foreground))}
+.trust-bar__icon svg{width:2.4rem;height:2.4rem}
+.trust-bar__text{display:flex;flex-direction:column;gap:.2rem}
+.trust-bar__heading{margin:0;font-size:1.4rem;line-height:1.3}
+.trust-bar__copy{font-size:1.3rem;line-height:1.4;color:rgba(var(--color-foreground),.75)}
+
+.testimonials__header{margin-bottom:3.2rem}
+.testimonials__eyebrow{margin:0 0 .8rem;color:rgba(var(--color-foreground),.7)}
+.testimonials__heading{margin:0}
+.testimonials__subheading{margin-top:1rem;max-width:60rem;margin-left:auto;margin-right:auto}
+.testimonials__grid{margin:0}
+.testimonial-card{height:100%;display:flex;flex-direction:column;gap:1.2rem;padding:2.4rem;border-radius:var(--text-boxes-radius);background:rgba(var(--color-foreground),.04);border:.1rem solid rgba(var(--color-foreground),.08)}
+.testimonial-card__stars{display:flex;gap:.2rem}
+.testimonial-card__star{width:1.8rem;height:1.8rem;fill:currentColor;color:rgb(var(--color-button))}
+.testimonial-card__star--empty{color:rgba(var(--color-foreground),.2)}
+.testimonial-card__title{margin:0}
+.testimonial-card__quote{margin:0;font-size:1.5rem;line-height:1.6;flex:1 1 auto}
+.testimonial-card__quote p{margin:0}
+.testimonial-card__footer{display:flex;flex-wrap:wrap;gap:.6rem 1.2rem;align-items:center;font-size:1.3rem}
+.testimonial-card__author{font-weight:600}
+.testimonial-card__verified{display:inline-flex;align-items:center;gap:.4rem;color:rgba(var(--color-foreground),.7)}
+.testimonial-card__verified svg{width:1.4rem;height:1.4rem}
+
+.comparison__header{margin-bottom:3.2rem}
+.comparison__heading{margin:0}
+.comparison__subheading{margin-top:1rem}
+.comparison__table-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.comparison__table{width:100%;border-collapse:separate;border-spacing:0;font-size:1.5rem}
+.comparison__table th,.comparison__table td{padding:1.4rem 1.6rem;text-align:center;border-bottom:.1rem solid rgba(var(--color-foreground),.1)}
+.comparison__table thead th{font-weight:600;font-size:1.4rem;letter-spacing:.06rem;text-transform:uppercase;border-bottom-width:.2rem}
+.comparison__feature,.comparison__feature-head{text-align:left;font-weight:500}
+.comparison__us-head{background:rgba(var(--color-button),.1);border-radius:var(--text-boxes-radius) var(--text-boxes-radius) 0 0;color:rgb(var(--color-foreground))}
+.comparison__cell--us{background:rgba(var(--color-button),.06)}
+.comparison__yes svg{width:2rem;height:2rem;color:rgb(var(--color-button))}
+.comparison__yes--muted svg{color:rgba(var(--color-foreground),.5)}
+.comparison__no{color:rgba(var(--color-foreground),.35);font-size:1.8rem}
+.comparison__cta{margin-top:3.2rem}
+
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2.4rem;margin:0;text-align:center}
+@media screen and (min-width:750px){.stats{grid-template-columns:repeat(var(--stats-cols,3),minmax(0,1fr))}.stats--2{--stats-cols:2}.stats--4{--stats-cols:4}}
+.stats__heading{margin:0 0 3.2rem}
+.stats__item{display:flex;flex-direction:column;gap:.6rem}
+.stats__value{font-family:var(--font-heading-family);font-size:3.6rem;line-height:1;font-weight:var(--font-heading-weight)}
+@media screen and (min-width:750px){.stats__value{font-size:4.8rem}}
+.stats__label{font-size:1.4rem;color:rgba(var(--color-foreground),.75)}
+
+.free-shipping-bar{padding:1.2rem 0 1.6rem;border-bottom:.1rem solid rgba(var(--color-foreground),.1);margin-bottom:1.2rem}
+.free-shipping-bar__text{margin:0 0 .8rem;font-size:1.3rem;line-height:1.4}
+.free-shipping-bar__track{height:.6rem;border-radius:.3rem;background:rgba(var(--color-foreground),.1);overflow:hidden}
+.free-shipping-bar__fill{display:block;height:100%;background:rgb(var(--color-button));border-radius:.3rem;transition:width .4s ease}
+@media (prefers-reduced-motion:reduce){.free-shipping-bar__fill{transition:none}}

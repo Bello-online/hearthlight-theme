@@ -1,0 +1,85 @@
+{
+  "sections": {
+    "banner": {
+      "type": "main-collection-banner",
+      "settings": {
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 12,
+        "columns_desktop": 3,
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "standard",
+        "enable_filtering": true,
+        "filter_type": "vertical",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 24,
+        "padding_bottom": 36
+      }
+    },
+    "trust": {
+      "type": "trust-bar",
+      "blocks": {
+        "shipping": {
+          "type": "item",
+          "settings": {
+            "icon": "truck",
+            "heading": "Free shipping over $75",
+            "text": "Canada-wide, applied automatically at checkout"
+          }
+        },
+        "returns": {
+          "type": "item",
+          "settings": {
+            "icon": "return",
+            "heading": "30-day returns",
+            "text": "Unused, in the original packaging"
+          }
+        },
+        "warranty": {
+          "type": "item",
+          "settings": {
+            "icon": "check_mark",
+            "heading": "12-month replacement",
+            "text": "On manufacturing defects, no arguments"
+          }
+        },
+        "delivery": {
+          "type": "item",
+          "settings": {
+            "icon": "stopwatch",
+            "heading": "8–15 business days",
+            "text": "Typical delivery; the checkout estimate is the real one"
+          }
+        }
+      },
+      "block_order": [
+        "shipping",
+        "returns",
+        "warranty",
+        "delivery"
+      ],
+      "settings": {
+        "color_scheme": "scheme-2",
+        "padding_top": 24,
+        "padding_bottom": 24
+      }
+    }
+  },
+  "order": [
+    "banner",
+    "product-grid",
+    "trust"
+  ]
+}

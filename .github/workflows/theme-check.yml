@@ -11,7 +11,7 @@ jobs:
     name: Shopify theme check
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - uses: shopify/theme-check-action@v2
         with:
           theme_root: '.'

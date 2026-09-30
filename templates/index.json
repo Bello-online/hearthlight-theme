@@ -44,7 +44,8 @@
         "color_scheme": "scheme-2",
         "stack_images_on_mobile": true,
         "mobile_content_alignment": "left",
-        "show_text_below": true
+        "show_text_below": true,
+        "image": "shopify://shop_images/hearthlight-hero.jpg"
       }
     },
     "trust": {
@@ -132,7 +133,8 @@
             "title": "Motion sensor with adjustable delay",
             "text": "<p>An infrared sensor turns the light on when someone moves in front of it and off again after a set delay. Hallways and closets are lit only while you are actually there.</p>",
             "link_label": "",
-            "link": ""
+            "link": "",
+            "image": "shopify://shop_images/hearthlight-kitchen.jpg"
           }
         },
         "mount": {

@@ -53,7 +53,7 @@
           "settings": {
             "heading": "Specs",
             "icon": "clipboard",
-            "content": "<ul><li><strong>Battery:</strong> [capacity in mAh, per size]</li><li><strong>Charge time:</strong> [hours over USB-C]</li><li><strong>Sensor range:</strong> [detection distance and angle]</li><li><strong>Brightness:</strong> [lumens, per size]</li><li><strong>Colour temperatures:</strong> warm, neutral and cool white</li><li><strong>Dimensions:</strong> 10, 20, 30 or 40 cm long</li><li><strong>Finish:</strong> black or silver</li></ul>"
+            "content": "<p><strong>Battery:</strong> [capacity in mAh, per size]</p><p><strong>Charge time:</strong> [hours over USB-C]</p><p><strong>Sensor range:</strong> [detection distance and angle]</p><p><strong>Brightness:</strong> [lumens, per size]</p><p><strong>Colour temperatures:</strong> warm, neutral and cool white</p><p><strong>Dimensions:</strong> 10, 20, 30 or 40 cm long</p><p><strong>Finish:</strong> black or silver</p>"
           }
         },
         "in_the_box": {
@@ -61,7 +61,7 @@
           "settings": {
             "heading": "What's in the box",
             "icon": "box",
-            "content": "<ul><li>Sensor light (1, 2 or 3 depending on the pack you choose)</li><li>Magnetic mounting plate with adhesive strip, one per light</li><li>USB-C charging cable</li><li>Quick-start card</li></ul>"
+            "content": "<p>Sensor light (1, 2 or 3 depending on the pack you choose)</p><p>Magnetic mounting plate with adhesive strip, one per light</p><p>USB-C charging cable</p><p>Quick-start card</p>"
           }
         },
         "shipping": {
@@ -182,7 +182,7 @@
         "columns": 3,
         "show_in_the_box": true,
         "in_the_box_heading": "What's in the box",
-        "in_the_box": "<ul><li>Light bar</li><li>Magnetic mounting strip</li><li>USB-C charging cable</li><li>3M adhesive pads</li><li>Quick-start guide</li></ul>",
+        "in_the_box": "<p>Light bar</p><p>Magnetic mounting strip</p><p>USB-C charging cable</p><p>3M adhesive pads</p><p>Quick-start guide</p>",
         "padding_top": 44,
         "padding_bottom": 48
       }

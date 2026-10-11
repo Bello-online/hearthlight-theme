@@ -145,7 +145,7 @@
         "hallway": {
           "type": "scene",
           "settings": {
-            "image": "shopify://shop_images/hearthlight-hero.jpg",
+            "image": "shopify://shop_images/hearthlight-hallway.jpg",
             "room": "Hallway",
             "heading": "Lit at ankle height, off before you are back in bed",
             "text": "A 30 cm bar mounted low on the wall. Warm white, motion mode, 20-second delay, so nobody fully wakes up.",
@@ -167,6 +167,7 @@
         "wardrobe": {
           "type": "scene",
           "settings": {
+            "image": "shopify://shop_images/hearthlight-wardrobe.jpg",
             "room": "Wardrobe",
             "heading": "Light where there is no outlet and never will be",
             "text": "A 20 cm bar under the top shelf lights the whole rail when the door opens. Cool white so navy and black are not the same colour.",
